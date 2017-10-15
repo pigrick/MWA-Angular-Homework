@@ -1,0 +1,10 @@
+<div class="container">
+    <ul class="products">
+        <li *ngFor="let product of productlist"
+            (click)="onSelect(product)">
+            <span class="badge">{{product._id}}</span> {{product.name}}
+        </li>
+    </ul>
+    <product-detail [product]="selectedProduct" (deleteRequest)="deleteProduct()"></product-detail>
+    <product-creation (createRequest)="createProduct()"></product-creation>
+</div>

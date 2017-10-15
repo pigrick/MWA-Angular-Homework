@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Cart</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Condition</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Total Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let productline of cart">
+                <td>{{productline.product._id}}</td>
+                <td>{{productline.product.name}}</td>
+                <td>{{productline.product.description}}</td>
+                <td>{{productline.product.price}}</td>
+                <td>{{condition(productline.product.condition)}}</td>
+                <td>{{productline.product.category}}</td>
+                <td>{{productline.unit}}</td>
+                <td>{{productline | calculateprice}}</td>
+                <td><button (click)='removeProductLine(productline.product)'>Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

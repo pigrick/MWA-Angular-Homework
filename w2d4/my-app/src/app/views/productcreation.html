@@ -1,0 +1,32 @@
+<div class="container">
+        <h2>Product Creation</h2>
+        <div class="form-group">
+            <label>Name: </label>
+            <input class="form-control" [(ngModel)]="product.name" placeholder="name"/>
+        </div>
+        <div class="form-group">
+            <label>Description: </label>
+            <input class="form-control" [(ngModel)]="product.description" placeholder="description"/>
+        </div>
+        <div class="form-group">
+            <label>Price: </label>
+            <input class="form-control" [(ngModel)]="product.price" placeholder="price"/>
+        </div>
+        
+    
+        <div class="form-group">
+            <label>Category: </label>
+            <input class="form-control" [(ngModel)]="product.category" placeholder="category"/>
+        </div>
+        <div class="form-group">
+            <label>Condition: </label>
+            <div class="form-control">
+                    <label class="checkbox-inline"><input type="radio" [(ngModel)]="product.condition" name="condition" [value]="0">New</label>
+                    <label class="checkbox-inline"><input type="radio" [(ngModel)]="product.condition" name="condition" [value]="1">Used</label>
+                    <label class="checkbox-inline"><input type="radio" [(ngModel)]="product.condition" name="condition" [value]="2">Discontinued</label>
+            </div>
+        </div>
+        
+        <button (click)="create()">Create</button>
+        
+    </div>

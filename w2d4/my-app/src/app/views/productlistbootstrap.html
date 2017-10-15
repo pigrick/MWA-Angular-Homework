@@ -1,0 +1,29 @@
+<cart-detail></cart-detail>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Condition</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productlist"
+            [class.selected]="product === selectedProduct"
+            (click)="onSelect(product)">
+                <td>{{product._id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td>{{condition(product.condition)}}</td>
+                <td>{{product.category}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+<product-detail [product]="selectedProduct" (deleteRequest)="deleteProduct($event)"></product-detail>
+<product-creation (createRequest)="createProduct($event)"></product-creation>
