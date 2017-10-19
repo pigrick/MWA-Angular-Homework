@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { products, Product, Condition } from '../product.class';
 import { ProductService } from '../service/product-service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'products',
@@ -14,7 +15,10 @@ export class ProductsComponent implements OnInit{
     }
 
     getProducts():void {
-        this.productService.getProducts().then(products => this.productlist = products);
+        this.productService.getProducts()
+        .subscribe(products => this.productlist = products.sort((x,y) => {
+            return x.price - y.price;
+        }));
     }
 
     ngOnInit():void{
@@ -30,15 +34,11 @@ export class ProductsComponent implements OnInit{
     }
 
     deleteProduct(product){
-        this.productService.deleteProducts(product._id).then(() => { this.getProducts() }).catch(err => console.log("hit"));
+        this.productService.deleteProducts(product._id).subscribe(()=> this.getProducts());
     }
 
     createProduct(product){
-        this.productService.createProduct(product).then(()=> { this.getProducts() }).catch(err => console.log("hit"));
-    }
-
-    addToCart(product){
-        this.productService
+        this.productService.createProduct(product).subscribe(() => this.getProducts());
     }
     //updateProduct(product)
 }

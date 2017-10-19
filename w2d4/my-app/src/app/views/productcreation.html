@@ -1,4 +1,43 @@
-<div class="container">
+<form [formGroup]="productCreationForm" class="container" #form="ngForm">
+    <h2>Product Creation</h2>
+    <div class="form-group">
+        <label for="name">Name: </label>
+        <span class="alert-danger" *ngIf="name.touched && name.errors">
+            <span  *ngIf="name.errors.uniqueName"> Name in already in used!</span>
+            <span  *ngIf="name.errors && name.errors.required"> Name is required!</span>
+        </span>
+        <input type="text" formControlName="name" class="form-control" placeholder="name"/>
+    </div>
+    <div class="form-group">
+        <label for="description">Description: </label>
+        <input type="text" formControlName="description" class="form-control" placeholder="description"/>
+    </div>
+    <div class="form-group">
+        <label for="price">Price: </label>
+        <span class="alert-danger" *ngIf="price.touched && price.errors">
+                <span  *ngIf="price.errors.pattern"> Numbers only!</span>
+        </span>
+        <input type="text" formControlName="price" class="form-control" placeholder="price"/>
+    </div>
+    
+
+    <div class="form-group">
+        <label for="category">Category: </label>
+        <input type="text" formControlName="category" class="form-control" placeholder="category"/>
+    </div>
+    <div class="form-group">
+        <label for="condition">Condition: </label>
+        <div class="form-control">
+                <label for="condition" class="checkbox-inline"><input type="radio" formControlName="condition" name="condition" [value]="0">New</label>
+                <label for="condition" class="checkbox-inline"><input type="radio" formControlName="condition" name="condition" [value]="1">Used</label>
+                <label for="condition" class="checkbox-inline"><input type="radio" formControlName="condition" name="condition" [value]="2">Discontinued</label>
+        </div>
+    </div>
+    
+    <button (click)="create(form)">Create</button>
+</form>
+
+<!-- <div class="container">
         <h2>Product Creation</h2>
         <div class="form-group">
             <label>Name: </label>
@@ -28,5 +67,4 @@
         </div>
         
         <button (click)="create()">Create</button>
-        
-    </div>
+    </div> -->

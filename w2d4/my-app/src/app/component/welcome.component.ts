@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../views/main.html'
+  templateUrl: '../views/title.html'
 })
-export class AppComponent {
+export class WelcomeComponent {
   title = 'Welcome To the Angular Website';
 }

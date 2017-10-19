@@ -1,2 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.ng-invalid .ng-touched{
+    border-color: #a94442;
+}
+.ng-valid .ng-touched{
+    border-color: green;
+}
